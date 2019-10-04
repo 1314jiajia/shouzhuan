@@ -97,6 +97,7 @@ CREATE TABLE `special` (
   `description` varchar(512) NOT NULL DEFAULT '' COMMENT '描述',
   `content` varchar(512) NOT NULL DEFAULT '' COMMENT '内容',
   `browse` tinyint(11) unsigned NOT NULL DEFAULT '0' COMMENT '浏览量',
+  `type` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '类型',
   `created_at` int(11) unsigned NOT NULL DEFAULT '' COMMENT '添加时间',
   `updated_at` int(11) unsigned NOT NULL DEFAULT '' COMMENT '修改时间',
   PRIMARY KEY (`id`)

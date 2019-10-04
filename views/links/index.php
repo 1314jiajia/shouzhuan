@@ -2,6 +2,8 @@
 	
 	use yii\helpers\Html;
 	use yii\widgets\ActiveForm;
+  use yii\widgets\LinkPager;
+
 	$this->title = '友链列表';
 ?>
 <h1> <center> <?= Html::encode($this->title)?></center></h1>
@@ -37,6 +39,13 @@
             
               </tbody>
             </table>
+            <div style="margin-left: 800px;"> 
+              <!-- 分页 -->
+                <?= 
+                   LinkPager::widget(['pagination' => $pagination,]);
+                ?>
+                  
+            </div>
           </div>
         </div>
       </div>

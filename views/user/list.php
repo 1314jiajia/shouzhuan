@@ -3,7 +3,7 @@
 	use yii\helpers\Html;
     // 表单基于这个模型
 	use yii\widgets\ActiveForm;
-
+	use yii\widgets\LinkPager;
 	$this->title = '用户信息列表';
 ?>
 <h1> <center><?= Html::encode($this->title) ?></center></h1><br/>
@@ -35,9 +35,16 @@
 	
 				</tr>
 				<?php endforeach; ?>   	
-              
+
               </tbody>
             </table>
+            <div style="margin-left: 800px;"> 
+            	<!-- 分页 -->
+              	<?= 
+              		 LinkPager::widget(['pagination' => $pagination,]);
+              	?>
+              		
+            </div>
           </div>
         </div>
       </div>

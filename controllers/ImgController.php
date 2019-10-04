@@ -12,6 +12,8 @@ use app\models\ContactForm;
 use app\models\Img;
 use app\models\UploadFiles;
 use yii\web\UploadedFile;
+use yii\data\Pagination;
+
 
 /**
   *  轮播图控制器
@@ -64,11 +66,21 @@ use yii\web\UploadedFile;
 	 	// 和数据库对接
 	 	$model = new img();
 
-	 	// 获取数据库中所有的数据
-	 	$info = $model->find()->all();
+        // 得到文章的总数（但是还没有从数据库取数据）
+        $query = $model::find();
 
-	 	// 分配变量显示页面 
-	 	return $this->render('index',['info'=>$info]);
+        $count = $query->count();
+
+        // 使用总数来创建一个分页对象
+        $pagination = new Pagination(['totalCount' => $count,"pageSize"=>3]);
+
+        // 使用分页对象来填充 limit 子句并取得文章数据
+        $articles = $query->offset($pagination->offset)->limit($pagination->limit)->all();
+            
+    
+        return $this->render('index',['info'=>$articles,'pagination' => $pagination]);
+
+
 	 }
 
 	 /**
@@ -76,7 +88,7 @@ use yii\web\UploadedFile;
  	  */
 	 public function actionEdit()
 	 {	
-	 	// 实例化数据库
+	 	// 实例化
 	 	$model = new  img();
 		
 		// 上传类		
@@ -91,23 +103,30 @@ use yii\web\UploadedFile;
 		// 根据id获取数据
 		$edit = $model->findone($id);
 // start
-		// 判断图片是否有上传
+		// 获取修改数据
 		if ($edit->load($request->post())) {
 
-	 		$uploadsModel->img = UploadedFile::getInstance($uploadsModel, 'img');
-	 		$rand = md5(time() . mt_rand(10000, 99999));
-	 		$filepath = 'uploads/' . $rand . '.' . $uploadsModel->img->extension;
-	 		
-	 		// 图片保存路径
-	 		$saveRet = $uploadsModel->img->saveAs($filepath);
-	 		
-	 		// 拼装入库数据 
-			$edit->images = $filepath;
+			 // 4 代表没有文件上传 0 代表成功
+			// 判断图片是否有上传
+			// if( $edit->images->error != 4 ){
 
-	 		$edit->updated_at = time();
-	 		
+		 		$uploadsModel->img = UploadedFile::getInstance($uploadsModel, 'img');
+		 		$rand = md5(time() . mt_rand(10000, 99999));
+		 		$filepath = 'uploads/' . $rand . '.' . $uploadsModel->img->extension;
+		 		
+		 		// 图片保存路径
+		 		$saveRet = $uploadsModel->img->saveAs($filepath);
+		 		
+		 		// 拼装入库数据 
+				$edit->images = $filepath;
+
+		 		$edit->updated_at = time();
+	 		// }
+		
 	 		// 验证通过之后更新数据
+
 	 		if ($edit->validate() && $edit->save()) {
+	 			
 	 			if($edit->update($id,$edit->attributes)){
 	 				 Yii::app()->user->setFlash('success','1');
 	 			}
@@ -115,6 +134,7 @@ use yii\web\UploadedFile;
 	 			return $this->redirect('index');
 
 	 		} else {
+	 			
 	 			Yii::warning("insert fail, error:" . json_encode($edit->getErrors()));
                 throw new Exception("修改失败!");
 	 		}

@@ -2,73 +2,72 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\widgets\LinkPager;
+
 $this->title = 'app类型展示';
 
 ?>
 
-<!-- <h1> <center><?= Html::encode($this->title);?></center> </h1> -->
-<html>
- <head></head>
- <body>
-  <div class="card"> 
- 
-   <div class="card-header d-flex align-items-center"> 
-    <h3 class="h4">APP类型添加</h3> 
-   </div> 
-   <div class="card-body"> 
-    <form class="form-horizontal" action="/index" method="post"> 
-     <div class="form-group row"> 
-      <label class="col-sm-3 form-control-label">姓名</label> 
-      <div class="col-sm-9"> 
-       <input type="text" class="form-control" /> 
-      </div> 
-     </div> 
-     <div class="line"></div> 
-   
-     <div class="line"></div> 
-     <div class="form-group row"> 
-      <label class="col-sm-3 form-control-label">密码</label> 
-      <div class="col-sm-9"> 
-       <input type="password" name="password" class="form-control" /> 
-      </div> 
-     </div> 
+<h1> <center><?= Html::encode($this->title);?></center> </h1>
 
-     <!-- 下拉框 -->
-     <div class="form-group row"> 
-      <label class="col-sm-3 form-control-label">分类</label> 
-      <div class="col-sm-9"> 
-       <select name="account" class="form-control mb-3"> 
-       		<option value="1">安卓</option> 
-       		<option value="2">IOS</option>
-       		<option value="3">综合</option>
-       </select> 
-      </div> 
-    <!--   <div class="col-sm-9 offset-sm-3"> 
-       <select multiple="" class="form-control"> <option>option 1</option> <option>option 2</option> <option>option 3</option> <option>option 4</option> </select> 
-      </div>  -->
-     </div> 
-     <div class="line"></div> 
-     <!-- 文件上传 -->
-     <div class="form-group row"> 
-      <label for="fileInput" class="col-sm-3 form-control-label">图片</label> 
-      <div class="col-sm-9"> 
-       <input id="fileInput" type="file" class="form-control-file" /> 
-      </div> 
-     </div> 
-   
-     <!-- <div class="line"></div>  -->
-    
-   
-   
-    <div class="col-sm-4 offset-sm-3">
-            <button type="submit" class="btn btn-primary">提交</button>
-            <button type="resert" class="btn btn-secondary">重置</button>
 
-    </div>
- 
-    </form> 
-   </div>
+<div class="card">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr align="center">
+                  <th>ID</th>
+                  <th>标题</th>
+                  <th>logo</th>
+                  <th>分类</th>
+                  <th>文件大小</th>
+                  <th>浏览次数</th>
+                  <th>评分</th>
+                  <th>下载次数</th>
+                  <th>内容</th>
+                  <th>下载地址</th>
+                  <th>内容图片</th>
+                  <th>修改时间</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+               <?php foreach ($info as $v): ?>  
+        <tr align="center">
+          
+            <td> <?= $v->id ;?></td>  
+            <td> <?= $v->name ;?></td>  
+            <td> <img src="/<?= $v->images ;?>" style="height: 80px"></td>  
+            <td> <?= $v->tag ;?></td>  
+            <td> <?= $v->size ;?></td>  
+            <td> <?= $v->browse ;?></td>  
+            <td> <?= $v->score ;?></td>  
+            <td> <?= $v->download ;?></td>  
+            <td> <?= $v->introduce ;?></td>  
+            <td> <?= $v->qrcode ;?></td>  
+            <td> <?= $v->img ;?></td>  
+            <td> <?= date('Y-m-d',$v->updated_at) ;?></td>
+          
+        <td> 
+             <a href="/applist/edit?id=<?php echo $v->id ;?>">修改</a> |
+             <a href="/applist/del?id=<?php  echo  $v->id ;?>">删除</a>
+        </td>
+        
+        </tr>
+
+        <?php endforeach; ?>  
+            
+              </tbody>
+            </table>
+             <div style="margin-left: 800px;"> 
+              <!-- 分页 -->
+                <?= 
+                   LinkPager::widget(['pagination' => $pagination,]);
+                ?>
+                  
+            </div>
+          </div>
+        </div>
+     
   </div>
- </body>
-</html>
-

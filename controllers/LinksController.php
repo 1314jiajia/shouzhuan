@@ -10,6 +10,8 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Links;
+use yii\data\Pagination;
+
 
 class LinksController extends Controller
 {
@@ -45,9 +47,20 @@ class LinksController extends Controller
 		 // 实例化model类
         $model = new links;
 
-        // 获取到所有的信息
-        $info = $model::find()->all();
-		return $this->render('/links/index',['info'=>$info]);
+        // 得到文章的总数（但是还没有从数据库取数据）
+        $query = $model::find();
+
+        $count = $query->count();
+
+        // 使用总数来创建一个分页对象
+        $pagination = new Pagination(['totalCount' => $count,"pageSize"=>7]);
+
+        // 使用分页对象来填充 limit 子句并取得文章数据
+        $articles = $query->offset($pagination->offset)->limit($pagination->limit)->all();
+            
+    
+        return $this->render('/links/index',['info'=>$articles,'pagination' => $pagination]);
+
 	}
 
 	// 链接修改

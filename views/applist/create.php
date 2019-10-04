@@ -23,7 +23,6 @@
                 <?= $form->field($model, 'download')->textInput() ?>
                 <?= $form->field($model, 'introduce')->textInput() ?>
                 <?= $form->field($model, 'qrcode')->textInput() ?>
-                <!-- <?= $form->field($model, 'type')->textInput() ?> -->
 
                 <div class="form-group">
                     <?= Html::submitButton('添加', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>

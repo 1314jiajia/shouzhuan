@@ -79,8 +79,8 @@ AdminAsset::register($this);
                     <li><a href="/user/list"><i class="icon-user"></i>用户列表 </a></li>
                     <li><a href="/applist/create"><i class="icon-padnote"></i>添加应用 </a></li>
                     <li><a href="/applist/index"> <i class="icon-padnote"></i>应用列表 </a></li>
-                    <li><a href="/create"> <i class="icon-padnote"></i>添加咨询/专题 </a></li>
-                    <li><a href="/list"> <i class="icon-padnote"></i>咨询/专题列表 </a></li>
+                    <li><a href="/special/create"> <i class="icon-padnote"></i>添加咨询/专题 </a></li>
+                    <li><a href="/special/index"> <i class="icon-padnote"></i>咨询/专题列表 </a></li>
                     <li><a href="/links/create"> <i class="icon-padnote"></i>友链添加 </a></li>
                     <li><a href="/links/index"> <i class="icon-padnote"></i>友链列表 </a></li>
                     <li><a href="/img/create"> <i class="icon-padnote"></i>轮播图添加 </a></li>
@@ -90,13 +90,7 @@ AdminAsset::register($this);
           </ul>
         </nav>
         <div class="content-inner">
-          <!-- Page Header-->
-         <!--  <header class="page-header">
-            <div class="container-fluid">
-              <h2 class="no-margin-bottom">页面展示</h2>
-            </div>
-          </header> -->
-          <!-- Dashboard Counts Section-->
+      
           <section class="dashboard-counts no-padding-bottom">
             <!-- 内容替换部分 -->
            <?= $content ?>
@@ -111,7 +105,7 @@ AdminAsset::register($this);
                 </div>
                 <div class="col-sm-6 text-right">
                   <p></p>
-                  <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+                 
                 </div>
               </div>
             </div>

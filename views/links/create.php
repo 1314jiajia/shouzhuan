@@ -6,7 +6,7 @@
 	$this->title = '友链添加';
 ?>
 
-<h1><center><?= Html::encode($this->title);?></center></h1>
+<h1><center><?= Html::encode($this->title);?></center></h1><br>
 <!-- 友情链接添加表单 -->
 
 <div class="site-signup">

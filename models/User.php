@@ -29,7 +29,6 @@ class User extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username','password'],'required'],
             [['created_at', 'updated_at'], 'integer'],
             [['username'], 'string', 'max' => 50],
             [['password'], 'string', 'max' => 32],
@@ -43,8 +42,8 @@ class User extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'username' => '用户名:',
-            'password' => '密码:',
+            'username' => 'Username',
+            'password' => 'Password',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
