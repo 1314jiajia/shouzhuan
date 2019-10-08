@@ -34,6 +34,12 @@ class AdminAsset extends AssetBundle
         '/css/style.default.css',
 
         '/css/custom.css',
+        // 前端
+        '/vendor/static/css/common.css',
+        '/vendor/static/css/index.css',
+        '/vendor/static/css/recommend.css',
+        '/vendor/static/css/swiper-3.4.1.min.css',
+
     ];
     public $js = [
         'vendor/jquery/jquery.min.js',
@@ -44,7 +50,18 @@ class AdminAsset extends AssetBundle
         'vendor/jquery-validation/jquery.validate.min.js',
         'js/charts-home.js',
         'js/front.js',
-
+        // 前端
+        '/vendor/js/clipboard.min.js',
+        '/vendor/js/common.js',
+        '/vendor/js/config.js',
+        '/vendor/js/index.js',
+        '/vendor/js/jquery-1.11.0.js',
+        '/vendor/js/recommend.js',
+        '/vendor/js/rem.js',
+        '/vendor/js/swiper-3.4.1.min.js',
+        '/vendor/js/template.js',
+        '/vendor/js/utils.js',
+        '/vendor/js/z_stat.js',
 
     ];
     public $depends = [

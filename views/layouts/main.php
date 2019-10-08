@@ -56,7 +56,7 @@ AdminAsset::register($this);
               <!-- Navbar Menu -->
               <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                 <!-- Logout    -->
-                <li class="nav-item"><a href="#" class="nav-link logout"> <span class="d-none d-sm-inline">退出</span><i class="fa fa-sign-out"></i></a></li>
+                <li class="nav-item"><a href="/login/login" class="nav-link logout"> <span class="d-none d-sm-inline">退出</span><i class="fa fa-sign-out"></i></a></li>
               </ul>
             </div>
           </div>
@@ -85,6 +85,8 @@ AdminAsset::register($this);
                     <li><a href="/links/index"> <i class="icon-padnote"></i>友链列表 </a></li>
                     <li><a href="/img/create"> <i class="icon-padnote"></i>轮播图添加 </a></li>
                     <li><a href="/img/index"> <i class="icon-padnote"></i>轮播图列表 </a></li>
+                    <li><a href="/label/create"> <i class="icon-padnote"></i>标签添加 </a></li>
+                    <li><a href="/label/index"> <i class="icon-padnote"></i>标签列表 </a></li>
                    
                     <!-- <li><a href="login.html"> <i class="icon-interface-windows"></i>Login page </a></li> -->
           </ul>

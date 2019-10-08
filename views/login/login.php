@@ -1,3 +1,9 @@
+<?php 
+    use yii\helpers\Html;
+  use yii\widgets\ActiveForm;
+
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -8,19 +14,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
     <!-- Fontastic Custom icon font-->
-    <link rel="stylesheet" href="css/fontastic.css">
+    <link rel="stylesheet" href="/css/fontastic.css">
     <!-- Google fonts - Poppins -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="/css/custom.css">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="shortcut icon" href="/img/favicon.ico">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -45,18 +51,40 @@
             <div class="col-lg-6 bg-white">
               <div class="form d-flex align-items-center">
                 <div class="content">
-                  <form method="post" class="form-validate">
-                    <div class="form-group">
-                      <input id="login-username" type="text" name="loginUsername" required data-msg="Please enter your username" class="input-material">
-                      <label for="login-username" class="label-material">用户名</label>
+
+          <!-- 输入框部分 -->
+ <div class="site-signup">
+    <div class="row">
+      
+         <div class="col-lg-12">
+                  <div class="card">
+                 
+                 
+                    <div class="card-body">
+                      <?php $form = ActiveForm::begin(); ?>
+    
+                        <div class="form-group">
+                      
+                              <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+                      
+                        </div>
+                        <div class="form-group">
+                      
+                              <?= $form->field($model, 'password')->passwordInput(['autofocus' => true]) ?>
+                      
+                        </div>
+                     
+                      <div class="form-group">
+                            <?= Html::submitButton('登录', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
+
+                      </div>
+                       <?php ActiveForm::end(); ?>
                     </div>
-                    <div class="form-group">
-                      <input id="login-password" type="password" name="loginPassword" required data-msg="Please enter your password" class="input-material">
-                      <label for="login-password" class="label-material">密码</label>
-                    </div><a id="login" href="index.html" class="btn btn-primary">登录</a>
-                    <!-- This should be submit button but I replaced it with <a> for demo purposes-->
-                  </form><!-- <a href="#" class="forgot-pass">Forgot Password?</a><br><small>Do not have an account? </small><a href="register.html" class="signup">Signup</a> -->
-                </div>
+               </div>
+            </div>
+        </div>
+   </div>
+              
               </div>
             </div>
           </div>
@@ -69,13 +97,13 @@
       </div>
     </div>
     <!-- JavaScript files-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/popper.js/umd/popper.min.js"> </script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
-    <script src="vendor/chart.js/Chart.min.js"></script>
-    <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/popper.js/umd/popper.min.js"> </script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/vendor/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="/vendor/chart.js/Chart.min.js"></script>
+    <script src="/vendor/jquery-validation/jquery.validate.min.js"></script>
     <!-- Main File-->
-    <script src="js/front.js"></script>
+    <script src="/js/front.js"></script>
   </body>
 </html>

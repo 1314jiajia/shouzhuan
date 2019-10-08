@@ -66,7 +66,7 @@ $config = [
     ],
 
     // 默认路由
-    'defaultRoute' => 'site/index',
+    'defaultRoute' => 'login/login',
 
     // 默认错误信息页面配置 
     // $config['components']['errorHandler']['errorAction'] = 'admin/site/error',

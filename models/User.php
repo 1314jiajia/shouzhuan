@@ -42,8 +42,8 @@ class User extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'username' => 'Username',
-            'password' => 'Password',
+            'username' => '账号',
+            'password' => '密码',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];

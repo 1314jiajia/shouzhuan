@@ -51,6 +51,7 @@ class ApplistController extends Controller
 			
 			// 评分 1 代表1颗星 5结束
 			$model->score = $model->score[0];
+			$model->img = '0';
 			$model->created_at = time();
 			$model->updated_at = time();
 			// var_dump($model);die();

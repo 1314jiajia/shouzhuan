@@ -39,8 +39,7 @@ class Applist extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['tag', 'download'], 'required'],
-            [['size', 'browse', 'score', 'download', 'created_at', 'updated_at', 'type'], 'integer'],
+            [['size', 'browse', 'score', 'download', 'created_at', 'updated_at'], 'integer'],
             [['introduce'], 'string'],
             [['name', 'images', 'tag', 'qrcode'], 'string', 'max' => 255],
         ];

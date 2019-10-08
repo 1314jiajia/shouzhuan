@@ -1,0 +1,116 @@
+body {
+	margin-bottom: 1.2972972972972974rem;
+	padding: 0.05rem 0.13rem;
+	background-color: #fff;
+}
+html{
+	background-color: #fff;
+}
+.platform-recom {
+	width: 100%;
+	height: 2.1621621621621623rem;/* 80px*/
+	height:2.054054054054054rem;
+	position: relative;
+	padding: 0.35135135135135137rem 0.32432432432432434rem;
+	background-color: #fff;
+	/*border-radius: 0.16216216216216217rem;
+	margin-bottom: 0.2702702702702703rem;*/
+}
+
+.platform-icon {
+	position: absolute;
+	width: 1.3513513513513513rem;
+ 	height: 1.3513513513513513rem;
+	border-radius: 0.2702702702702703rem;
+}
+
+.platform-icon img {
+	border-radius: 0.2702702702702703rem;
+	width: 100%;
+	height: 100%;
+}
+
+.platform-title {
+	position: absolute;
+	width: 5.8108108108108105rem;
+	height: 1.2432432432432432rem;
+	left: 1.8918918918918919rem;
+	overflow: hidden;
+}
+
+.platform-title-text {
+	position: absolute;
+	top: 0.10810810810810811rem;
+	width: 100%;
+	height: 0.43243243243243246rem;
+	line-height: 0.43243243243243246rem;
+	color: #222;
+}
+
+.platform-name {
+	display: inline;
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.label {
+	position: absolute;
+	display: inline-block;
+	height: 0.43243243243243246rem;
+	width: 0.8108108108108109rem;
+	line-height: 0.48243243243243246rem;
+	margin-left: 0.21621621621621623rem;
+	text-align: center;
+	color: #fff;
+	background-position: 100% 100%;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+.label1{
+	background-image: url(../images/icon-lable1.png);
+}
+.label2{
+	background-image: url(../images/icon-lable2.png);
+}
+.label3{
+	background-image: url(../images/icon-lable3.png);
+}
+.label4{
+	background-image: url(../images/icon-lable4.png);
+}
+.label5 {
+	background-image: url(../images/icon-lable5.png);
+}
+
+.platform-title-intro {
+	position: absolute;
+	bottom: 0.08108108108108109rem;
+	width: 100%;
+	height: 0.35135135135135137rem;
+	line-height: 0.35135135135135137rem;
+	color: #8D8D93;
+}
+.platform-line{
+	position: absolute;
+	bottom: 0;
+	right: 0.42667rem;
+	width: 7.351351351351352rem;
+	height: .13513513513513514rem;
+	border-bottom: solid #eee 0.5px;
+}
+.platform-buttont {
+	position: absolute;
+	width: 1.972972972972973rem;
+    height: 0.7837837837837838rem;
+    line-height: 0.7837837837837838rem;
+	text-align: center;
+	border-radius: 2.7027027027027026rem;
+	background-color: #F1F5FA;
+	right: 0.32432432432432434rem;
+	top: 0.68rem;
+	color: #007AFF;
+	font-weight: bold;
+}

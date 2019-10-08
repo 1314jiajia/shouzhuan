@@ -56,7 +56,7 @@ class SpecialController extends Controller
 
         $count = $query->count();
 
-        // 使用总数来创建一个分页对象
+        // 使用总数来创建一个分页对象,和每页分几个
         $pagination = new Pagination(['totalCount' => $count,"pageSize"=>7]);
 
         // 使用分页对象来填充 limit 子句并取得文章数据

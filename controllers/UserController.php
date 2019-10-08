@@ -70,7 +70,14 @@ class UserController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        // $model = new user();
+        // $user = Yii::$app->request;
+
+        // if($model->load($user->post())){
+        //     var_dump($model);die;
+        // }
+        // echo "111";die;
+        // return $this->render('login',['model'=>$model]);
     }
 
     /**
@@ -89,14 +96,19 @@ class UserController extends Controller
             // 加密密码
             $model->password = md5($model->password . '_adfs');
             
+            // $model->password = Yii::$app->getSecurity()->generatePasswordHash($model->password);
+
+
             // 修改,添加时间
             $model->created_at = time();
             $model->updated_at = time();
-            
+            // var_dump($model);die;
             // 添加到数据库中,取反
-            if (!$model->save()) {
-                Yii::warning("insert fail, error:" . json_encode($model->getErrors()));
-                throw new Exception("添加失败!");
+          
+            if(!$model->save()){
+                Yii::warning('insert fail error' . json_encode($model->getErrors()));
+                throw new Exception("添加失败", 1);
+                
             }
 
             // 添加成功之后重定向到用户展示页面,下面需要有方法来指定这个页面
