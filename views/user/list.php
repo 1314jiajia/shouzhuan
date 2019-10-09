@@ -14,16 +14,16 @@
           <div class="table-responsive">
             <table class="table">
               <thead>
-                <tr align="center">
+              <tr>
                     <th>ID</th>
-					<th>姓名</th>
-			        <th>操作</th>
+				          	<th>姓名</th>
+			               <th>操作</th>
 	            </tr>
               </thead>
               <tbody>
              
                <?php foreach ($info as $v): ?>  
-				<tr align="center">
+			   	<tr >
 		
 				    <td> <?= $v->id ;?></td>  
 				    <td> <?= $v->username ;?></td>  

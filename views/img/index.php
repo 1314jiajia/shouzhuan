@@ -16,16 +16,16 @@ $this->title = '轮播图页面展示';
               <thead>
                 <tr align="center">
                  	<th>ID</th>
-					<th>关键词</th>
-					<th>描述</th>
-					<th>图片</th>
-					<th>修改时间</th>
-					<th>操作</th>
+        					<th>关键词</th>
+        					<th>描述</th>
+        					<th>图片</th>
+        					<th>修改时间</th>
+        					<th>操作</th>
                 </tr>
               </thead>
               <tbody>
                <?php foreach ($info as $v): ?>  
-				<tr align="center">
+				<tr>
 					
 				    <td> <?= $v->id ;?></td>  
 				    <td> <?= $v->keywords ;?></td>  

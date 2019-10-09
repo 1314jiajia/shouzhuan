@@ -19,24 +19,19 @@ Date: 2019-09-24 22:59:29
 -- Table structure for article
 -- ----------------------------
 
-DROP TABLE IF EXISTS `article`;
+DROP TABLE IF EXISTS `applist`;
 CREATE TABLE `article` (
 `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT COMMENT '综合',
-`keywords` varchar(255)  NOT NULL DEFAULT '' COMMENT '关键词',
-`description` varchar(255)  NOT NULL DEFAULT '' COMMENT '描述',
-`url` varchar(255) NOT NULL DEFAULT '' COMMENT '下载地址',
-`title` varchar(255) NOT NULL DEFAULT '' COMMENT '标题',
-`browse` int(11) NOT NULL DEFAULT 0 COMMENT'浏览次数',
-`grade` tinyint(3) NOT NULL DEFAULT 0 COMMENT '评分,1代表一颗星 2代表两颗星...',
-`size` int(11) NOT NULL DEFAULT 0 COMMENT '文件大小',
-`label` varchar(11) NOT NULL DEFAULT '' COMMENT '标签',
-`content` varchar(512) NOT NULL DEFAULT '' COMMENT '内容',
-`images` varchar(255) NOT NULL DEFAULT '' COMMENT '内容图片',
-`icons` int(11) NOT NULL DEFAULT 0 COMMENT '标题小图标',
-`type` tinyint(3) NOT NULL DEFAULT 0 COMMENT '0,安卓;1苹果;2综合;3手赚咨询',
-`recommend` tinyint(3) NOT NULL DEFAULT 0 COMMENT '推荐;0 正常显示 1 推荐置顶',
-`download` tinyint(11) unsigned NOT NULL DEFAULT 0 COMMENT '下载量',
-`classify` varchar(100) NOT NULL DEFAULT '' COMMENT '分类',
+'name' varchar(255) unsigned NOT NULL DEFAULT '' COMMENT '名称',
+'images' varchar(255) unsigned NOT NULL DEFAULT '' COMMENT '小图标',
+'tag' varchar(255) unsigned NOT NULL DEFAULT '' COMMENT '分类',
+'size' int(10) unsigned NOT NULL DEFAULT 0 COMMENT '大小',
+'browse' int(10) unsigned NOT NULL DEFAULT 0 COMMENT '浏览次数',
+'score' tinyint(1) unsigned NOT NULL DEFAULT 0 COMMENT '评分 1代表1颗星,到5结束',
+'download' int(10) unsigned NOT NULL DEFAULT 0 COMMENT '下载次数',
+'introduce' text() unsigned NOT NULL DEFAULT 0 COMMENT '内容介绍',
+'qrcode'  varchar(255) unsigned NOT NULL DEFAULT 0 COMMENT '下载地址',
+'img'  varchar(255) unsigned NOT NULL DEFAULT 0 COMMENT '内容图片',
 `created_at` int(11) unsigned NOT NULL DEFAULT 0 COMMENT '添加时间',
 `updated_at` int(11) unsigned NOT NULL DEFAULT 0 COMMENT '修改时间',
 PRIMARY KEY (`id`)
@@ -46,7 +41,7 @@ PRIMARY KEY (`id`)
 -- 轮播图标 255个大概是83个汉字
 -- Table structure for images
 -- ----------------------------
-DROP TABLE IF EXISTS `images`;
+DROP TABLE IF EXISTS `img`;
 CREATE TABLE `images` (
   `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT COMMENT '轮播图id',
   `keywords` varchar(255) NOT NULL DEFAULT '' COMMENT '关键词',
@@ -97,7 +92,7 @@ CREATE TABLE `special` (
   `description` varchar(512) NOT NULL DEFAULT '' COMMENT '描述',
   `content` varchar(512) NOT NULL DEFAULT '' COMMENT '内容',
   `browse` tinyint(11) unsigned NOT NULL DEFAULT '0' COMMENT '浏览量',
-  `type` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '类型',
+  `type` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '类型 , 1是咨询 ,2是专题',
   `created_at` int(11) unsigned NOT NULL DEFAULT '' COMMENT '添加时间',
   `updated_at` int(11) unsigned NOT NULL DEFAULT '' COMMENT '修改时间',
   PRIMARY KEY (`id`)

@@ -59,11 +59,28 @@ $config = [
     ],
 
     // 模块配置 
+    // 'modules' => [
+    //     'admin' => [
+    //         'class' => 'app\modules\admin\Module',
+    //     ],
+    // ],
+
     'modules' => [
+
+        // 原有的配置
         'admin' => [
             'class' => 'app\modules\admin\Module',
         ],
-    ],
+
+        // 百度富文本配置
+    'redactor' => [ 
+        'class' => 'yii\redactor\RedactorModule', 
+        'uploadDir' => '/uploads', 
+        'uploadUrl' => 'http://hello.com/uploads', 
+        'imageAllowExtensions'=>['jpg','png','gif'] 
+    ], 
+    
+],
 
     // 默认路由
     'defaultRoute' => 'login/login',

@@ -31,7 +31,7 @@ $this->title = "咨询/专题 展示页面";
               <tbody>
              
                <?php foreach ($info as $v): ?>  
-				<tr align="center">
+				<tr>
 		
 				    <td> <?= $v->id ;?></td>  
 				    <td> <?= $v->title ;?></td>  

@@ -13,7 +13,7 @@
           <div class="table-responsive">
             <table class="table">
               <thead>
-                  <tr align="center">
+                  <tr>
                     <th>ID</th>
                     <th>url地址</th>
                     <th>网站名称</th>
@@ -23,8 +23,7 @@
               <tbody>
 
                 <?php foreach ($info as $v): ?>  
-				   <tr align="center">
-		
+            <tr>		
   				    <td> <?= $v->id ;?></td>  
   				    <td> <?= $v->links ;?></td>  
   				    <td> <?= $v->titile ;?></td>  

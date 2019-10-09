@@ -117,7 +117,7 @@ class SpecialController extends Controller
 		if($edit->load($res->post()) && $edit->validate()){
 
 			// $edit->type = $edit->type[0];
-			// 拼装一个跟新时间
+			// 拼装一个更新时间
 			$edit->updated_at = time();
 			// var_dump($edit);die;
 			if(!$edit->update()){

@@ -1,0 +1,5 @@
+{
+    "require": {
+        "yiidoc/yii2-redactor": "^2.0"
+    }
+}

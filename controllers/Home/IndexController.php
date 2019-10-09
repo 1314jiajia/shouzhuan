@@ -24,6 +24,9 @@ use yii\data\Pagination;
  	// 轮播图
  	public function actionIndex()
  	{
+        // 获取到当前域名
+        $path = Yii::$app->request->hostInfo;
+      
     	$img = new img();
 
     	// 获取到所有的轮播图
@@ -32,21 +35,20 @@ use yii\data\Pagination;
     	// 获取轮播图地址
     	foreach ($list as &$v){
 
-    		$v['images'] = "http://hello.com/".$v['images'];
-    	}
+            $v['images'] = "$path/".$v['images'];
+    	
+        }
 
     	// 获取内容部分
     	$applist = new applist();
 
     	$info = $applist::find()->all();
-    	
     	// 小图标
     	foreach ($info as &$v){
 
-    		$v['images'] = "http://hello.com/".$v['images'];
+    		$v['images'] = "$path/".$v['images'];
     	}
-    	
-    	// var_dump($info);die;
+    	// var_dump($a);die;
     	return  $this->renderPartial('/home/index',['list'=>$list,'info'=>$info]);
 
  	}

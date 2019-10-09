@@ -53,7 +53,7 @@
     </script>
 </head>
 
-<body class="body">
+<body class="body" style="font-size: 58px;">
     <div class="switch-top">
         <div class="switch">
             <div class="switch-left switch-sm fs18"><span class="plate-name" id="plate-item-name"></span><span class="plate-arrow"></span></div>
@@ -315,7 +315,7 @@
 <script type="text/html" id="t:platformList">
     <?php foreach ($info as $v ): ?>
 
-        <a class="platform-a" href="" onclick="_czc.push(['_trackEvent','探树列表']);" data-type="" data-linkUrl="<?= $v->qrcode ?>" data-id="<?= $v->id ?>" data-type="" data-utitle=""
+        <a class="platform-a" href="" onclick="" data-type="" data-linkUrl="<?= $v->qrcode ?>" data-id="<?= $v->id ?>" data-type="" data-utitle=""
             data-platnum="<?= $v->browse ?>">
             <div class="platform">
 
@@ -325,7 +325,18 @@
                 <div class="platform-title">
                         <?= $v->name ?>
                     <div class="platform-title-intro fs13">
-                        <?= $v->tag;?>
+                        <?php
+
+                        if($v->tag == 1){
+
+                                echo "安卓赚钱";
+                        
+                        }else{
+                                echo "苹果赚钱";
+                        }
+                        
+                        ?>
+                        
                     </div>
                 </div>
                 <div class="platform-buttont fs14"><a href="">去赚钱</a></div>

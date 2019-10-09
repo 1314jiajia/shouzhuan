@@ -35,23 +35,30 @@ class ApplistController extends Controller
 		$uploadsModel = new UploadFiles(); 
 
 		if($model->load($res->post())){
-			// var_dump($model);die;
+
+			// 单图片
 			$uploadsModel->img = UploadedFile::getInstance($uploadsModel, 'img');
+			
 	 		$rand = md5(time() . mt_rand(10000, 99999));
+	 		
 	 		$filepath = 'logo/' . $rand . '.' . $uploadsModel->img->extension;
 	 		
+	 	
 	 		// 图片保存
 	 		$saveRet = $uploadsModel->img->saveAs($filepath);
-	 		
+
 	 		// 拼装入库数据 
 			$model->images = $filepath;
-
+		
 			// 分类 1 安卓 2 ios 3 其他
 			$model->tag = $model->tag[0];
 			
 			// 评分 1 代表1颗星 5结束
 			$model->score = $model->score[0];
-			$model->img = '0';
+			// 浏览次数
+			$model->browse += 1;
+			// 下载次数
+			$model->download += 1;
 			$model->created_at = time();
 			$model->updated_at = time();
 			// var_dump($model);die();
@@ -84,7 +91,7 @@ class ApplistController extends Controller
         $count = $query->count();
 
         // 使用总数来创建一个分页对象
-        $pagination = new Pagination(['totalCount' => $count,"pageSize"=>5]);
+        $pagination = new Pagination(['totalCount' => $count,"pageSize"=>4]);
 
         // 使用分页对象来填充 limit 子句并取得文章数据
         $articles = $query->offset($pagination->offset)->limit($pagination->limit)->all();
@@ -121,5 +128,99 @@ class ApplistController extends Controller
 			
 		}
 	}
+
+	// 修改
+	public function actionEdit()
+	{
+		$model = new applist();
+
+		// 上传类		
+		$uploadsModel = new UploadFiles();
+
+		// 
+		$request = Yii::$app->request;
+		 	
+	 	// 获取到要修改的数据id
+		$id = $request->get('id');
+
+		// 根据id获取数据
+		$edit = $model->findone($id);
+
+		// 获取分类和评分的值
+		$tag = $edit->tag;
+		$score = $edit->score;
+// start
+		// 获取修改数据
+		if ($edit->load($request->post())) {
+
+			 // 4 代表没有文件上传 0 代表成功
+			// 判断图片是否有上传
+			// if( $edit->images->error != 4 ){
+
+		 		$uploadsModel->img = UploadedFile::getInstance($uploadsModel, 'img');
+		 		$rand = md5(time() . mt_rand(10000, 99999));
+		 		$filepath = 'uploads/' . $rand . '.' . $uploadsModel->img->extension;
+		 		
+		 		// 图片保存路径
+		 		$saveRet = $uploadsModel->img->saveAs($filepath);
+		 		
+		 		// 拼装入库数据 
+				$edit->images = $filepath;
+				
+		 		$edit->updated_at = time();
+	 		// }
+		
+	 		// 验证通过之后更新数据
+
+	 		if ($edit->validate() && $edit->save()) {
+	 			
+	 			if($edit->update($id,$edit->attributes)){
+	 				 Yii::app()->user->setFlash('success','1');
+	 			}
+
+	 			return $this->redirect('index');
+
+	 		} else {
+	 			
+	 			Yii::warning("insert fail, error:" . json_encode($edit->getErrors()));
+                throw new Exception("修改失败!");
+	 		}
+	 		
+	 }
+	 		if($tag == 1){
+
+				$tag = "安卓"; 
+
+			}else{
+
+				$tag = "iOS";
+			}
+
+			switch ($score) {
+				case '1':
+					$score = '一颗星';
+					break;
+				case '2':
+					$score = '二颗星';
+					break;
+				case '3':
+					$score = '三颗星';
+					break;
+				case '4':
+					$score = '四颗星';
+					break;
+				case '5':
+					$score = '五颗星';
+					break;
+				
+				default:
+					# code...
+					break;
+			}
+	 	// 加载修改页面
+		return $this->render('edit',['edit'=>$edit,'uploadsModel'=>$uploadsModel,'tag'=>$tag,'score'=>$score]);
+
+	}
+	
 
 }
