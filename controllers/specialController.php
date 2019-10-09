@@ -27,12 +27,10 @@ class SpecialController extends Controller
 		$res = Yii::$app->request;
 
 		// // 判断是否有内容上传
-		if($model->load($res->post())){
-
+		if($model->load($res->post()) && $model->validate()){
 			$model->type = $model->type[0];
 			$model->created_at = time();
 			$model->updated_at = time();
-			// var_dump($model);die();	
 			if(!$model->save()){
 				Yii::warning('insert fail error' . json_encode($model->getErrors()));
 				throw new Exception("添加失败", 1);

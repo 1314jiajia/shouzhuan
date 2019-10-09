@@ -39,6 +39,7 @@ class Applist extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['name','tag','size','score','qrcode','introduce','browse','download'],'required','message' => '添加字段不能为空!'],
             [['size', 'browse', 'score', 'download', 'created_at', 'updated_at'], 'integer'],
             [['introduce'], 'string'],
             [['name', 'images', 'tag', 'qrcode'], 'string', 'max' => 255],

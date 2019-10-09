@@ -30,7 +30,7 @@ use yii\data\Pagination;
 	 	// 实例化model类
 	 	$model = new Img();
 	 	$request = Yii::$app->request;
-	 	if ($model->load($request->post())) {
+	 	if ($model->load($request->post()) && $model->validate()) {
 
 	 		$uploadsModel->img = UploadedFile::getInstance($uploadsModel, 'img');
 	 		$rand = md5(time() . mt_rand(10000, 99999));
@@ -106,22 +106,23 @@ use yii\data\Pagination;
 		// 获取修改数据
 		if ($edit->load($request->post())) {
 
-			 // 4 代表没有文件上传 0 代表成功
 			// 判断图片是否有上传
-			// if( $edit->images->error != 4 ){
 
 		 		$uploadsModel->img = UploadedFile::getInstance($uploadsModel, 'img');
-		 		$rand = md5(time() . mt_rand(10000, 99999));
-		 		$filepath = 'uploads/' . $rand . '.' . $uploadsModel->img->extension;
 		 		
-		 		// 图片保存路径
-		 		$saveRet = $uploadsModel->img->saveAs($filepath);
+		 		// 对不修改图片做的处理
+		 		if(!empty($uploadsModel->img)){
+				 		$rand = md5(time() . mt_rand(10000, 99999));
+				 		$filepath = 'uploads/' . $rand . '.' . $uploadsModel->img->extension;
 		 		
-		 		// 拼装入库数据 
-				$edit->images = $filepath;
+		 				// 图片保存路径
+		 				$saveRet = $uploadsModel->img->saveAs($filepath);
+		 		
+		 				// 拼装入库数据 
+						$edit->images = $filepath;
+				}
 
 		 		$edit->updated_at = time();
-	 		// }
 		
 	 		// 验证通过之后更新数据
 

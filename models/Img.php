@@ -19,7 +19,7 @@ class Img extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-
+             [['keywords','description'],'required','message'=>'添加字段不能为空'],
             [['created_at', 'updated_at'], 'integer'],
             [['keywords', 'description', 'images'], 'string', 'max' => 88],
         

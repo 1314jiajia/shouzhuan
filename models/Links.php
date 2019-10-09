@@ -29,7 +29,7 @@ class Links extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['links','titile'],'required'],
+            [['links','titile'],'required','message'=>'添加字段不能为空'],
             [['created_at', 'updated_at'], 'integer'],
             [['links'], 'string', 'max' => 255],
             [['titile'], 'string', 'max' => 50],

@@ -33,8 +33,9 @@ class Special extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['browse', 'type', 'created_at', 'updated_at'], 'integer'],
-            [['title', 'keywords', 'description'], 'string', 'max' => 11],
+            [['title', 'keywords', 'description', 'content','browse','type'], 'required','message' => '添加字段不能为空!'],
+            [['browse', 'created_at', 'updated_at'], 'integer'],
+            [['title', 'keywords', 'description'], 'string', 'max' => 255],
             [['content'], 'string', 'max' => 512],
         ];
     }
@@ -50,7 +51,7 @@ class Special extends \yii\db\ActiveRecord
             'keywords' => '关键词',
             'description' => '描述',
             'content' => '内容',
-            'browse' => '浏览',
+            'browse' => '浏览次数',
             'type' => '类型',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',

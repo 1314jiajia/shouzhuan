@@ -49,13 +49,9 @@ $this->title = "咨询/专题 添加页面";
                              <?= $form->field($model, 'browse')->textInput() ?>
                 
                         </div>	
-                       <!--   <div class="form-group">       
-                       
-                             <?= $form->field($model, 'type')->textInput() ?>
-                    
-                        </div>	 -->
+                     
                 		  <div class="form-group">
-                           <?= $form->field($model, 'type[]')->dropDownList(['0'=>'请选择','1' => '专题', '2' => '咨询']) ?>
+                           <?= $form->field($model, 'type[]')->dropDownList(['0'=>'请选择','1' => '咨询', '2' => '专题']) ?>
                            </div>
 
                          <div class="form-group">

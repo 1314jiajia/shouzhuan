@@ -34,22 +34,23 @@ class ApplistController extends Controller
 		// 上传类图片
 		$uploadsModel = new UploadFiles(); 
 
-		if($model->load($res->post())){
+		if($model->load($res->post()) && $model->validate()){
 
 			// 单图片
 			$uploadsModel->img = UploadedFile::getInstance($uploadsModel, 'img');
-			
-	 		$rand = md5(time() . mt_rand(10000, 99999));
-	 		
-	 		$filepath = 'logo/' . $rand . '.' . $uploadsModel->img->extension;
-	 		
-	 	
-	 		// 图片保存
-	 		$saveRet = $uploadsModel->img->saveAs($filepath);
+			if(!empty($uploadsModel->img)){
+		 		$rand = md5(time() . mt_rand(10000, 99999));
+		 		
+		 		$filepath = 'logo/' . $rand . '.' . $uploadsModel->img->extension;
+		 		
+		 	
+		 		// 图片保存
+		 		$saveRet = $uploadsModel->img->saveAs($filepath);
 
-	 		// 拼装入库数据 
-			$model->images = $filepath;
-		
+		 		// 拼装入库数据 
+				$model->images = $filepath;
+			
+			}
 			// 分类 1 安卓 2 ios 3 其他
 			$model->tag = $model->tag[0];
 			
@@ -158,17 +159,23 @@ class ApplistController extends Controller
 			// if( $edit->images->error != 4 ){
 
 		 		$uploadsModel->img = UploadedFile::getInstance($uploadsModel, 'img');
-		 		$rand = md5(time() . mt_rand(10000, 99999));
-		 		$filepath = 'uploads/' . $rand . '.' . $uploadsModel->img->extension;
+
+		 		// 未修改图片的处理 
+		 		if(!empty($uploadsModel->img )) {
+
 		 		
-		 		// 图片保存路径
-		 		$saveRet = $uploadsModel->img->saveAs($filepath);
-		 		
-		 		// 拼装入库数据 
-				$edit->images = $filepath;
-				
+			 		$rand = md5(time() . mt_rand(10000, 99999));
+			 		$filepath = 'uploads/' . $rand . '.' . $uploadsModel->img->extension;
+			 		
+			 		// 图片保存路径
+			 		$saveRet = $uploadsModel->img->saveAs($filepath);
+			 		
+			 		// 拼装入库数据 
+					$edit->images = $filepath;
+				}	
+
 		 		$edit->updated_at = time();
-	 		// }
+	 	
 		
 	 		// 验证通过之后更新数据
 

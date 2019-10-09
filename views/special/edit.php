@@ -48,7 +48,7 @@ $this->title = "咨询/专题 修改页面";
 	                        </div>
 	                        
 	                        <div class="form-group">
-                           <?= $form->field($edit, 'type')->dropDownList(['0'=>'请选择','1' => '专题', '2' => '咨询']) ?>
+                           <?= $form->field($edit, 'type')->dropDownList(['0'=>'请选择','1' => '咨询', '2' => '专题']) ?>
                            </div>
 	                         <div class="form-group">
 	                             <?= Html::submitButton('修改',['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>

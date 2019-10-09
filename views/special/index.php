@@ -39,7 +39,7 @@ $this->title = "咨询/专题 展示页面";
 				    <td> <?= $v->description ;?></td>  
 				    <td> <?= $v->content ;?></td>  
 				    <td> <?= $v->browse ;?></td>  
-				    <td> <?= $v->type ;?></td>  
+				    <td> <?= $v->type == 1 ? '咨询' : '专题';?></td>  
 				    <td> <?= date('Y-m-d',$v->created_at);?></td>  
 				
 					<td> 

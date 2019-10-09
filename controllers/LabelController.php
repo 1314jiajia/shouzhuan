@@ -26,17 +26,17 @@ use yii\data\Pagination;
  		 $model = new  label();
  		 $res = Yii::$app->request;
 
- 		 if($model->load($res->post())){
+ 		 if($model->load($res->post()) && $model->validate()){
 
- 		 	$model->pid = $model->pid[0];
- 		 	$model->created_at = time();
- 		 	$model->updated_at = time();
- 		 	// var_dump($model);die;
- 		 	if(!$model->save()){
- 		 		Yii::warning('insert  fail error '.json_encode($model->getErrors()));
- 		 		throw new Exception('添加失败');
- 		 	}
- 		 	return $this->redirect('index');
+     		 	$model->pid = $model->pid[0];
+     		 	$model->created_at = time();
+     		 	$model->updated_at = time();
+     		 	// var_dump($model);die;
+     		 	if(!$model->save()){
+     		 		Yii::warning('insert  fail error '.json_encode($model->getErrors()));
+     		 		throw new Exception('添加失败');
+     		 	}
+ 		 	   return $this->redirect('index');
  		 }	
  		
 

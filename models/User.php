@@ -29,7 +29,7 @@ class User extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'password'], 'required'],
+            [['username', 'password'], 'required','message' => '用户名或密码不能为空!'],
             [['created_at', 'updated_at'], 'integer'],
             [['username'], 'string', 'max' => 50],
             [['password'], 'string', 'max' => 32],

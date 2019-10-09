@@ -29,8 +29,9 @@ class Label extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['label'],'required','message'=>'标签字段不能为空'],
             [['pid', 'created_at', 'updated_at'], 'integer'],
-            [['label'], 'string', 'max' => 11],
+            [['label'], 'string', 'max' => 50],
         ];
     }
 
