@@ -25,19 +25,19 @@ use yii\data\Pagination;
 	 */
 	 public function actionCreate()
 	 {
-	 	$uploadsModel = new UploadFiles();
+	 	$uploads = new UploadFiles();
 
 	 	// 实例化model类
 	 	$model = new Img();
 	 	$request = Yii::$app->request;
 	 	if ($model->load($request->post()) && $model->validate()) {
 
-	 		$uploadsModel->img = UploadedFile::getInstance($uploadsModel, 'img');
+	 		$uploads->images = UploadedFile::getInstance($uploads, 'images');
 	 		$rand = md5(time() . mt_rand(10000, 99999));
-	 		$filepath = 'uploads/' . $rand . '.' . $uploadsModel->img->extension;
+	 		$filepath = 'uploads/' . $rand . '.' . $uploads->images->extension;
 	 		
 	 		// 图片保存
-	 		$saveRet = $uploadsModel->img->saveAs($filepath);
+	 		$saveRet = $uploads->images->saveAs($filepath);
 	 		
 	 		// 拼装入库数据 
 			$model->images = $filepath;
@@ -55,7 +55,7 @@ use yii\data\Pagination;
 	 		
 	 }
 	 	// 显示添加页面
-	 	return $this->render('create',['model'=>$model,'uploadsModel' => $uploadsModel ]);
+	 	return $this->render('create',['model'=>$model,'uploads' => $uploads ]);
 	 } 	
 
 	 /**
@@ -92,7 +92,7 @@ use yii\data\Pagination;
 	 	$model = new  img();
 		
 		// 上传类		
-		$uploadsModel = new UploadFiles();
+		$uploads = new UploadFiles();
 
 		// 
 		$request = Yii::$app->request;
@@ -108,15 +108,15 @@ use yii\data\Pagination;
 
 			// 判断图片是否有上传
 
-		 		$uploadsModel->img = UploadedFile::getInstance($uploadsModel, 'img');
+		 		$uploads->images = UploadedFile::getInstance($uploads, 'images');
 		 		
 		 		// 对不修改图片做的处理
-		 		if(!empty($uploadsModel->img)){
+		 		if(!empty($uploads->images)){
 				 		$rand = md5(time() . mt_rand(10000, 99999));
-				 		$filepath = 'uploads/' . $rand . '.' . $uploadsModel->img->extension;
+				 		$filepath = 'uploads/' . $rand . '.' . $uploads->images->extension;
 		 		
 		 				// 图片保存路径
-		 				$saveRet = $uploadsModel->img->saveAs($filepath);
+		 				$saveRet = $uploads->images->saveAs($filepath);
 		 		
 		 				// 拼装入库数据 
 						$edit->images = $filepath;
@@ -142,7 +142,7 @@ use yii\data\Pagination;
 	 		
 	 }
 	 	// 加载修改页面
-		return $this->render('edit',['edit'=>$edit,'uploadsModel'=>$uploadsModel]);
+		return $this->render('edit',['edit'=>$edit,'uploads'=>$uploads]);
 
 	 }
 

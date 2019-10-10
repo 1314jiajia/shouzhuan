@@ -27,7 +27,7 @@ $this->title = 'app类型展示';
                   <th>下载次数</th>
                   <th>内容</th>
                   <th>下载地址</th>
-                  <th>内容图片</th>
+                  <!-- <th>内容图片</th> -->
                   <th>修改时间</th>
                   <th>操作</th>
                 </tr>
@@ -46,7 +46,7 @@ $this->title = 'app类型展示';
             <td> <?= $v->download ;?></td>  
             <td> <?= $v->introduce ;?></td>  
             <td> <?= $v->qrcode ;?></td>  
-            <td> <?= $v->img ;?></td>  
+            <!-- <td > <?= $v->img ;?></td>   -->
             <td> <?= date('Y-m-d',$v->updated_at) ;?></td>
           
         <td> 

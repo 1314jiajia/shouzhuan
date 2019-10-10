@@ -51,17 +51,17 @@ class AdminAsset extends AssetBundle
         'js/charts-home.js',
         'js/front.js',
         // 前端
-        '/vendor/js/clipboard.min.js',
-        '/vendor/js/common.js',
-        '/vendor/js/config.js',
-        '/vendor/js/index.js',
-        '/vendor/js/jquery-1.11.0.js',
-        '/vendor/js/recommend.js',
-        '/vendor/js/rem.js',
-        '/vendor/js/swiper-3.4.1.min.js',
-        '/vendor/js/template.js',
-        '/vendor/js/utils.js',
-        '/vendor/js/z_stat.js',
+        // '/vendor/js/clipboard.min.js',
+        // '/vendor/js/common.js',
+        // '/vendor/js/config.js',
+        // '/vendor/js/index.js',
+        // '/vendor/js/jquery-1.11.0.js',
+        // '/vendor/js/recommend.js',
+        // '/vendor/js/rem.js',
+        // '/vendor/js/swiper-3.4.1.min.js',
+        // '/vendor/js/template.js',
+        // '/vendor/js/utils.js',
+        // '/vendor/js/z_stat.js',
 
     ];
     public $depends = [

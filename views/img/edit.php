@@ -31,12 +31,11 @@
 	                        
 	                        <div class="form-group">
 	                        		
-	                        		  <?= $form->field($uploadsModel, 'img')->fileInput() ?>
+	                        		  <?= $form->field($uploads, 'images')->fileInput() ?>
 
 	                        </div>
 	                         <div class="form-group">
 	                             <?= Html::submitButton('修改',['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
-	                               <?=Html::resetButton('重置',['class'=>'btn btn-primary']);?>
 	                        </div>
 	                      
 	                       <?php ActiveForm::end(); ?>

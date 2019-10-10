@@ -53,7 +53,7 @@
     </script>
 </head>
 
-<body class="body" style="font-size: 58px;">
+<body class="body">
     <div class="switch-top">
         <div class="switch">
             <div class="switch-left switch-sm fs18"><span class="plate-name" id="plate-item-name"></span><span class="plate-arrow"></span></div>
@@ -242,11 +242,12 @@
                     试玩赚钱
                 </p>
             </a>
-
-            <a class="navbar-item navbar-read" onclick="_czc.push(['_trackEvent','导航栏','阅读赚钱导航']);"> <i class="navbar-icon icon-read"></i>
+        
+            <a class="navbar-item navbar-read" href="read"> <i class="navbar-icon icon-read"></i>
                 <p class="navbar-desc">
                     阅读赚钱
                 </p>
+        
             </a>
             <a class="navbar-item navbar-wode" onclick="_czc.push(['_trackEvent','导航栏','我的']);"> <i class="navbar-icon icon-recommend"><em class="xnew"></em></i>
                 <p class="navbar-desc">
@@ -315,7 +316,7 @@
 <script type="text/html" id="t:platformList">
     <?php foreach ($info as $v ): ?>
 
-        <a class="platform-a" href="" onclick="" data-type="" data-linkUrl="<?= $v->qrcode ?>" data-id="<?= $v->id ?>" data-type="" data-utitle=""
+        <a class="platform-a" href="#" onclick="" data-type="" data-linkUrl="#" data-id="<?= $v->id ?>" data-type="" data-utitle=""
             data-platnum="<?= $v->browse ?>">
             <div class="platform">
 
@@ -345,12 +346,14 @@
        
         <?php endforeach; ?>
 </script>
+
 <script type="text/javascript">
 $('.mi-title').on('click','.title-body',function(){
     let index = $(this).index();
     $(this).addClass('bot5-border').siblings().removeClass('bot5-border');
     $('.index-centerman .listw').eq(index).show().siblings().hide();
 })
+
 </script>
 <!-- 滚动公告列表 -->
 <script type="text/javascript">

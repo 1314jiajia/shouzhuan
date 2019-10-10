@@ -31,7 +31,7 @@ $this->title = '轮播图添加界面';
                         </div>
                         
                         <div class="form-group">
-                             <?= $form->field($uploadsModel, 'img')->fileInput() ?>
+                             <?= $form->field($uploads, 'images')->fileInput() ?>
 
                         </div>  
                          <div class="form-group">

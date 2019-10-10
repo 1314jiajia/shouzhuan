@@ -26,9 +26,9 @@ use yii\data\Pagination;
  		 $model = new  label();
  		 $res = Yii::$app->request;
 
- 		 if($model->load($res->post()) && $model->validate()){
+ 		 if($model->load($res->post())){
 
-     		 	$model->pid = $model->pid[0];
+          $model->pid = $model->pid[0];
      		 	$model->created_at = time();
      		 	$model->updated_at = time();
      		 	// var_dump($model);die;
@@ -38,7 +38,7 @@ use yii\data\Pagination;
      		 	}
  		 	   return $this->redirect('index');
  		 }	
- 		
+ 		 
 
  		 return $this->render('create',['model'=>$model]);
  	}

@@ -71,7 +71,7 @@ $config = [
         'admin' => [
             'class' => 'app\modules\admin\Module',
         ],
-
+       
         // 百度富文本配置
     'redactor' => [ 
         'class' => 'yii\redactor\RedactorModule', 

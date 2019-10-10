@@ -10,21 +10,23 @@ class UploadFiles extends Model
     /**
      * @var UploadedFile
      */
-    public $img;
     public $images;
 
     public function rules()
     {
         return [
-            [['img','images'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg','maxFiles' => 4],
+            [['images'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg','maxFiles' => 6],
+
         ];
     }
 
+
+   
     // 上传多个文件
     // public function upload()
     // {
     //     if ($this->validate()) { 
-    //         foreach ($this->img as $file) {
+    //         foreach ($this->images as $file) {
     //             $file->saveAs('uploads/' . $file->baseName . '.' . $file->extension);
     //         }
     //         return true;
@@ -32,14 +34,35 @@ class UploadFiles extends Model
     //         return false;
     //     }
     // }
+     public function upload()
+    {
+        if ($this->validate()) {
+             
 
+            $images = [];
+            if($this->images){
+                 foreach ($this->images as $file) {
+                    $rand = md5(time() . mt_rand(10000, 99999));
+                     $path = 'uploads/' . $rand . '.' . $file->extension;                     
+                     if( $file->saveAs($path)){
+                            $images[] = $path;
+                     }
+
+                
+                 }
+                  return $images;
+            }
+
+        } else {
+            return false;
+        }
+    }
     
     public function attributeLabels()
     {
         return [
             'id' => 'ID',
-            'images' => '图片',
-            'img'=>'图片上传',
+            'images' => '多图片上传',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
