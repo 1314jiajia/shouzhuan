@@ -31,7 +31,6 @@ use yii\data\Pagination;
           $model->pid = $model->pid[0];
      		 	$model->created_at = time();
      		 	$model->updated_at = time();
-     		 	// var_dump($model);die;
      		 	if(!$model->save()){
      		 		Yii::warning('insert  fail error '.json_encode($model->getErrors()));
      		 		throw new Exception('添加失败');
