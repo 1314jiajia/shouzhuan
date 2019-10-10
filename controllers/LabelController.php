@@ -54,6 +54,7 @@ use yii\data\Pagination;
         $query = $model::find();
 
         $count = $query->count();
+        
         // 使用总数来创建一个分页对象
         $pagination = new Pagination(['totalCount' => $count,"pageSize"=>7]);
 
